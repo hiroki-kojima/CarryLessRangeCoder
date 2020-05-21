@@ -7,11 +7,12 @@ with open(path.join(this_directory, 'readme.rst'), encoding='utf-8') as f:
 
 setup(
     name='CarryLessRangeCoder',
-    version='1.0.1',
+    version='1.0.2',
     url='https://github.com/hiroki-kojima/CarryLessRangeCoder',
     author='hiroki-kojima',
     author_email='hiroki.kojima.1997@gmail.com',
     description='Python implementation of carry-less range coder',
     packages=['carryless_rangecoder'],
     long_description=long_description,
+    long_description_content_type='text/x-rst'
 )
