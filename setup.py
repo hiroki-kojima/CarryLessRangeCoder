@@ -6,7 +6,7 @@ with open(path.join(this_directory, 'readme.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='carryless_rangecoder',
+    name='CarryLessRangeCoder',
     version='1.0',
     url='https://github.com/hiroki-kojima/CarryLessRangeCoder',
     author='hiroki-kojima',

@@ -8,7 +8,7 @@ Install
 
 .. code-block:: bash
 
-   $ pip install carryless-rangecoder
+   $ pip install CarryLessRangeCoder
 
 Examples
 --------
