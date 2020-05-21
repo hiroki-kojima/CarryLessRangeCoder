@@ -3,6 +3,13 @@ Python implementation of carry-less range coder
 
 Both static and dynamic encoding can be used.
 
+Install
+-------
+
+.. code-block:: bash
+
+   $ pip install carryless-rangecoder
+
 Examples
 --------
 
