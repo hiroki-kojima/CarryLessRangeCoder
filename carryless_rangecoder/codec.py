@@ -14,6 +14,10 @@ Examples
 >>> for i in range(1, 256):
 ...     count_cum[i] =  count[i] + count_cum[i - 1]
 ...
+>>>
+
+with context manager.
+
 >>> out = BytesIO()
 >>> with Encoder(out) as enc:
 ...     for index in data:
@@ -24,6 +28,20 @@ Examples
 ...     for _ in range(len(data)):
 ...         decoded.append(dec.decode(count, count_cum))
 ...
+>>> assert decoded == data
+
+without context manager.
+
+>>> out = BytesIO()
+>>> enc = Encoder(out)
+>>> for index in data:
+...     enc.encode(count, count_cum, index)
+>>> enc.finish()
+>>> decoded = []
+>>> dec = Decoder(out)
+>>> dec.start()
+>>> for _ in range(len(data)):
+...     decoded.append(dec.decode(count, count_cum))
 >>> assert decoded == data
 
 """
@@ -100,6 +118,9 @@ class Encoder(_Base):
 
         self._update_range(self._put)
 
+    def finish(self):
+        self.__exit__()
+
     def __enter__(self):
         return self
 
@@ -168,6 +189,9 @@ class Decoder(_Base):
         self._update_range(self._get)
 
         return left
+
+    def start(self):
+        self.__enter__()
 
     def __enter__(self):
         for _ in range(0, self._range_size, self._precision):

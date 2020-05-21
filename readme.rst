@@ -22,12 +22,12 @@ Examples
 
     out = BytesIO()
     # Encode
-    with rc.Encoder(out) as enc:
+    with rc.Encoder(out) as enc:  # or enc.finish()
         for index in data:
             enc.encode(count, count_cum, index)
     # Decode
     decoded = []
-    with rc.Decode(out) as dec:
+    with rc.Decode(out) as dec:  # or dec.start()
         for _ in range(len(data)):
             decoded.append(dec.decode(count, count_cum))
 
